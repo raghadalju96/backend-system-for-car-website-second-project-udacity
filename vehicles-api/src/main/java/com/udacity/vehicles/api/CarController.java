@@ -8,21 +8,17 @@ import com.udacity.vehicles.domain.car.Car;
 import com.udacity.vehicles.service.CarService;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * Implements a REST-based controller for the Vehicles API.
@@ -34,10 +30,20 @@ class CarController {
     private final CarService carService;
     private final CarResourceAssembler assembler;
 
+//    @Autowired
+//    RestTemplate restTemplate;
+
     CarController(CarService carService, CarResourceAssembler assembler) {
         this.carService = carService;
         this.assembler = assembler;
     }
+
+//    @GetMapping("/pricing")
+//    public Object getStudents() {
+//        Object objects = restTemplate.getForObject("http://pricing-service/services/price?vehicleId=1", Object.class);
+//        return objects;
+//    }
+//
 
     /**
      * Creates a list to store any vehicles.
@@ -63,7 +69,9 @@ class CarController {
          * TODO: Use the `assembler` on that car and return the resulting output.
          *   Update the first line as part of the above implementing.
          */
-        return assembler.toResource(new Car());
+        return assembler.toResource( carService.findById(id));
+
+//        return assembler.toResource(new Car());
     }
 
     /**
