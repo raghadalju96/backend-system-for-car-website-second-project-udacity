@@ -37,4 +37,5 @@ public class SwaggerConfig {
                 "License of API", "http://www.udacity.com/license", Collections.emptyList());
     }
 
+
 }
