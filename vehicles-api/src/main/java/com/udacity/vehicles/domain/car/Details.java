@@ -37,6 +37,21 @@ public class Details {
 
     private String externalColor;
 
+    public Details(){}
+
+    public Details(String body, String model, Manufacturer manufacturer, Integer numberOfDoors, String fuelType, String engine, Integer mileage, Integer modelYear, Integer productionYear, String externalColor) {
+        this.body = body;
+        this.model = model;
+        this.manufacturer = manufacturer;
+        this.numberOfDoors = numberOfDoors;
+        this.fuelType = fuelType;
+        this.engine = engine;
+        this.mileage = mileage;
+        this.modelYear = modelYear;
+        this.productionYear = productionYear;
+        this.externalColor = externalColor;
+    }
+
     public String getBody() {
         return body;
     }

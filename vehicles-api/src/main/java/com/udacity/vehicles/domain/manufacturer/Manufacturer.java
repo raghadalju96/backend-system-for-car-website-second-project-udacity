@@ -15,6 +15,8 @@ public class Manufacturer {
 
     public Manufacturer() { }
 
+
+
     public Manufacturer(Integer code, String name) {
         this.code = code;
         this.name = name;
